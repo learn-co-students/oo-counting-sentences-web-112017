@@ -15,6 +15,12 @@ class String
   end
 
   def count_sentences
-    self.split(/\.|\?|\!/).delete_if {|x| x.length < 2}.length
+    count = 0
+     self.split.each do |sub_sent|
+       if sub_sent.sentence? || sub_sent.question? || sub_sent.exclamation?
+         count += 1
+       end
+     end
+     count
   end
 end
